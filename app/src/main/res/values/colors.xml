@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="timerbg1">#FF6779B9</color>
+    <color name="timerbg2">#FFE8F5FF</color>
+    <color name="buttoncolor">#FF636FAD</color>
+    <color name="pagemaincolor">#FF5E44FF</color>
 </resources>
