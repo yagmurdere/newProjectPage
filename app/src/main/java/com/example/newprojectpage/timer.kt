@@ -98,12 +98,6 @@ fun timer(
              val r=size.width/2f
              val a = cos(beta)*r
              val b = sin(beta)*r
-             drawPoints(
-                 listOf(Offset( center.x+a,center.y+b)),
-                 pointMode = PointMode.Points,
-                 strokeWidth=(strokeWidth*3f).toPx(),
-                 cap = StrokeCap.Round
-             )
          }
 
         IconButton(onClick = {
@@ -135,7 +129,7 @@ fun timer(
         Text(text = (currentTime / 1000L).toString(),
             fontSize = 44.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.LightGray,
+            color = colorResource(id = R.color.timerbg1),
             modifier = Modifier.align(Alignment.BottomCenter)
         )
 
@@ -149,8 +143,8 @@ fun timer(
 fun mainSurface(){
     Box(contentAlignment = Alignment.Center){
         timer(totalTime = 1500L * 1000L,
-            inactiveBarColor = Color.LightGray,
-            activeBarColor = colorResource(id = R.color.pagemaincolor),
+            inactiveBarColor = colorResource(id = R.color.timerbg2),
+            activeBarColor = colorResource(id = R.color.timerbg1),
             modifier = Modifier.size(200.dp))
     }
 }
