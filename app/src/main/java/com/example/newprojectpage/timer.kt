@@ -48,7 +48,6 @@ import kotlin.math.sin
 @Composable
 fun timer(
     totalTime:Long,
-    handleColor: Color,
     inactiveBarColor:Color,
     activeBarColor:Color,
     modifier: Modifier=Modifier,
@@ -102,16 +101,11 @@ fun timer(
              drawPoints(
                  listOf(Offset( center.x+a,center.y+b)),
                  pointMode = PointMode.Points,
-                 color = handleColor,
                  strokeWidth=(strokeWidth*3f).toPx(),
                  cap = StrokeCap.Round
              )
          }
-        Text(text = (currentTime / 1000L).toString(),
-            fontSize = 44.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.DarkGray
-        )
+
         IconButton(onClick = {
             if(currentTime<=0L){
                 currentTime=totalTime
@@ -120,7 +114,7 @@ fun timer(
                 isTimerRunning=!isTimerRunning
             }
         }, modifier = Modifier
-            .align(Alignment.BottomCenter)
+            .align(Alignment.Center)
             .clip(shape = CircleShape)
             .background(
                 brush = Brush.verticalGradient(
@@ -138,6 +132,12 @@ fun timer(
                 tint = colorResource(id = R.color.buttoncolor)
             )
         }
+        Text(text = (currentTime / 1000L).toString(),
+            fontSize = 44.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.LightGray,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
 
 
 
@@ -149,8 +149,7 @@ fun timer(
 fun mainSurface(){
     Box(contentAlignment = Alignment.Center){
         timer(totalTime = 1500L * 1000L,
-            handleColor = colorResource(id = R.color.pagemaincolor),
-            inactiveBarColor = Color.DarkGray,
+            inactiveBarColor = Color.LightGray,
             activeBarColor = colorResource(id = R.color.pagemaincolor),
             modifier = Modifier.size(200.dp))
     }
