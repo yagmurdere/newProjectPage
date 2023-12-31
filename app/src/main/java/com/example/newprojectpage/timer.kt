@@ -42,6 +42,7 @@ import com.example.newprojectpage.ui.theme.NewProjectPageTheme
 import kotlinx.coroutines.delay
 import kotlin.math.PI
 import kotlin.math.cos
+import kotlin.math.floor
 import kotlin.math.sin
 
 @SuppressLint("RememberReturnType")
@@ -126,23 +127,26 @@ fun timer(
                 tint = colorResource(id = R.color.buttoncolor)
             )
         }
-        Text(text = (currentTime / 1000L).toString(),
-            fontSize = 44.sp,
+        Text(text = formattedTime(currentTime),
+            fontSize = 35.sp,
             fontWeight = FontWeight.Bold,
             color = colorResource(id = R.color.timerbg1),
             modifier = Modifier.align(Alignment.BottomCenter)
         )
-
-
-
-
-
     }
+}
+
+@Composable
+fun formattedTime(milliseconds:Long):String{
+    val totalSeconds = floor(milliseconds/1000.0).toLong()
+    val minutes = (totalSeconds / 60).toString().padStart(2, '0')
+    val seconds = (totalSeconds % 60).toString().padStart(2, '0')
+    return "$minutes:$seconds"
 }
 @Composable
 fun mainSurface(){
     Box(contentAlignment = Alignment.Center){
-        timer(totalTime = 1500L * 1000L,
+        timer(totalTime = 120L * 1000L,
             inactiveBarColor = colorResource(id = R.color.timerbg2),
             activeBarColor = colorResource(id = R.color.timerbg1),
             modifier = Modifier.size(200.dp))
